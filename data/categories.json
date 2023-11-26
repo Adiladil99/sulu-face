@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "title": "Парикмахерские услуги",
+        "slug": "parikmaherskie-uslugi",
+        "childs": [
+            {
+                "id": 11,
+                "title": "Мужская стрижка",
+                "slug": "muzhskaya-strizhka"
+            },
+            {
+                "id": 12,
+                "title": "Женская стрижка",
+                "slug": "zhenskaya-strizhka"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Ногтевой сервис",
+        "slug": "nogtevoi-servis"
+    },
+    {
+        "id": 3,
+        "title": "Уход за телом",
+        "slug": "uhod-za-telom"
+    },
+    {
+        "id": 4,
+        "title": "Макияж",
+        "slug": "makiyazh"
+    },
+    {
+        "id": 5,
+        "title": "Удаление волос",
+        "slug": "udalenie-volos"
+    },
+    {
+        "id": 6,
+        "title": "Косметология",
+        "slug": "kosmetologiya"
+    },
+    {
+        "id": 7,
+        "title": "Тату и пирсинг",
+        "slug": "tatu-i-pirsing"
+    },
+    {
+        "id": 8,
+        "title": "Брови",
+        "slug": "brovi"
+    },
+    {
+        "id": 9,
+        "title": "Ресницы",
+        "slug": "resnitsy"
+    }
+]

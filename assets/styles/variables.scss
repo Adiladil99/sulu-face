@@ -1,0 +1,18 @@
+$minWidth: 320px;
+$maxWidth: 1920px;
+$maxWidthContainer: 1279px;
+$containerPadding: 30px;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: $containerWidth; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$laptop: 1466.98px;
+$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98px; // Телефоны L
+$mobileSmall: 479.98px; // Телефоны S
+
+$textColor: #000000;
+$whiteColor: #FCFCFC;
+$blueColor: #2572C1;

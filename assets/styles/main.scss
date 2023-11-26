@@ -1,0 +1,46 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: unset;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+p, h5, h3, h4, h6 {
+  margin: 0;
+}
+
+.container {
+    width: 1240px;
+    margin: 0 auto;
+    @media screen and (max-width: $laptop) {
+      width: 1140px;
+    }
+    @media screen and (max-width: 1200px) {
+      width: 960px;
+    }
+    @media screen and (max-width: $tablet) {
+      width: 720px;
+    }
+    @media screen and (max-width: $mobile) {
+      width: 540px;
+    }
+    @media screen and (max-width: $mobileSmall) {
+      width: 90%;
+    }
+  }
