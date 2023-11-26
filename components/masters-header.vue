@@ -28,6 +28,7 @@ import lists from "@/data/categories.json"
 .header {
     position: sticky; 
     background: white;
+    z-index: 999;
     top: 0;
     padding: 14px 0;
     font-weight: 500;

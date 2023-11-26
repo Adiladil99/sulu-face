@@ -6,10 +6,10 @@ import lists from "@/data/categories.json";
   <div class="home">
     <div class="home-banner">
       <div class="home-banner-f">
-        <img src="@/assets/images/2.jpg" />
+        <img src="~/assets/images/2.jpg" />
       </div>
       <div class="home-banner-s">
-        <img src="@/assets/images/marts.jpeg" />
+        <img src="~/assets/images/marts.jpeg" />
       </div>
     </div>
     <div class="home__categories">
