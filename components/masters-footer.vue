@@ -25,9 +25,9 @@
             gap: 5px;
           "
         >
-          <Icon name="uil:instagram-alt" color="#E85A4F" size="32" />
-          <Icon name="uil:whatsapp-alt" color="#E85A4F" size="32" />
-          <Icon name="uil:telegram" color="#E85A4F" size="32" />
+          <Icon name="uil:instagram-alt" color="#9e0e06" size="32" />
+          <Icon name="uil:whatsapp-alt" color="#9e0e06" size="32" />
+          <Icon name="uil:telegram" color="#9e0e06" size="32" />
         </div>
       </div>
     </div>
@@ -44,13 +44,13 @@
 
 <style lang="scss" scoped>
 .footer {
-  background: rgb(249,248,242);
-  background: linear-gradient(90deg, rgba(249,248,242,1) 0%, rgba(240,238,230,1) 57%, rgba(231,224,215,1) 100%);
+  background: #100f0b;
   padding: 28px 0 14px 0;
   border-top: 1px solid rgb(193, 191, 191, 0.4);
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  color: #fffffd;
   gap: 24px;
   &__top {
     display: flex;
@@ -64,7 +64,7 @@
       }
       span {
         font-size: 14px;
-        color: #252525;
+        color: #fffffd;
       }
     }
     &-list {
@@ -77,9 +77,9 @@
         gap: 18px;
         a {
           text-decoration: none;
-          color: rgb(21, 20, 20);
+          color: rgb(219, 219, 217);
           &:hover {
-            color: #252525;
+            color: #fffffd;
           }
         }
       }

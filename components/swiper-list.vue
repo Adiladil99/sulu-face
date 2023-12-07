@@ -93,15 +93,15 @@ const breakpoints_cards = {
                 border-radius: 50%;
                 width: 32px;
                 height: 32px;
-                background: #E85A4F;
+                background: #9d0f03;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border: none;
                 outline: none;
                 &:hover {
-                cursor: pointer;
-                background: #b83128;
+                    cursor: pointer;
+                    background: rgb(169, 34, 25);
                 }
             }
             }

@@ -196,7 +196,7 @@ const { getServicesId } = storeToRefs(servicesList);
           <Icon
             name="uil:angle-right"
             :class="{ activearrow: activeFaq === item.id }"
-            color="rgb(78, 7, 114)"
+            color="#fffffd"
             size="24"
           />
           <p>{{ item.question }}</p>
@@ -260,16 +260,17 @@ const { getServicesId } = storeToRefs(servicesList);
       &-elem {
         position: relative;
         width: 170px;
-        background: white;
+        background: #1f1f1f;
         height: 140px;
         padding: 16px 25px 0 16px;
         border-radius: 16px;
+        border: 1px solid #323230;
         text-decoration: none;
-        color: #252525;
+        color: #fffffd;
         font-size: 14px;
         font-weight: 600;
         &:hover {
-          background: #e0e0e0;
+          background: #343434;
           cursor: pointer;
         }
       }
@@ -290,7 +291,7 @@ const { getServicesId } = storeToRefs(servicesList);
         border-radius: 50%;
         width: 32px;
         height: 32px;
-        background: #e85a4f;
+        background: #9d0f03;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -298,7 +299,7 @@ const { getServicesId } = storeToRefs(servicesList);
         outline: none;
         &:hover {
           cursor: pointer;
-          background: #b83128;
+          background: rgb(151, 33, 24);
         }
       }
     }
@@ -306,7 +307,7 @@ const { getServicesId } = storeToRefs(servicesList);
   &__reviews {
     margin-top: 40px;
     &-elem {
-      background: white;
+      background: #1f1f1f;
       padding: 14px 14px 20px 14px;
       height: auto;
       display: flex;
@@ -367,7 +368,8 @@ const { getServicesId } = storeToRefs(servicesList);
       flex-direction: column;
       gap: 8px;
       &-top {
-        background: #e98074;
+        background: #5c0100;
+        color: #fffffd;
         width: 100%;
         padding: 12px 20px;
         border-radius: 20px;

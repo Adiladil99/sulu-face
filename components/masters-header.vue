@@ -49,7 +49,7 @@ const closeAuth = () => {
             <Icon name="uil:location-point" color="#E85A4F" />
             Алматы
           </div>
-          <NuxtLink to="/contacts" class="dshow" style="color: #252525; text-decoration: none;">
+          <NuxtLink to="/contacts" class="dshow" style="color: #ececec; text-decoration: none;">
             <p>Контакты</p>
             </NuxtLink>
           <button @click="authModal = true" class="dshow">Войти</button>
@@ -73,13 +73,7 @@ const closeAuth = () => {
 <style lang="scss" scoped>
 .header {
   position: sticky;
-  background: rgb(249, 248, 242);
-  background: linear-gradient(
-    90deg,
-    rgba(249, 248, 242, 1) 0%,
-    rgba(240, 238, 230, 1) 57%,
-    rgba(231, 224, 215, 1) 100%
-  );
+  background: #100f0b;
   z-index: 999;
   top: 0;
   padding: 14px 0;
@@ -115,10 +109,10 @@ const closeAuth = () => {
         border-radius: 12px;
         color: white;
         font-size: 14px;
-        background: #e85a4f;
+        background: #9e0e06;
         &:hover {
           cursor: pointer;
-          background: #ba372d;
+          background: rgb(154, 34, 26);
         }
       }
     }
@@ -131,7 +125,7 @@ const closeAuth = () => {
     a {
       text-decoration: none;
       font-size: 14px;
-      color: #252525;
+      color: #fffffd;
     }
   }
   @media screen and (max-width: 992px) {
@@ -157,12 +151,12 @@ const closeAuth = () => {
 .tooltip-container {
     z-index: 2;
   position: relative;
-  background-color: #ff3cac;
+  background-color: #320020;
   background-image: linear-gradient(
     225deg,
-    #ff3cac 0%,
-    #784ba0 50%,
-    #2b86c5 100%
+    #320020 0%,
+    #23001e 50%,
+    #0e0d2f 100%
   );
   cursor: pointer;
   transition: all 0.2s;
@@ -185,7 +179,7 @@ const closeAuth = () => {
 .tooltip-container .borde-back {
   width: 44px;
   height: 44px;
-  background-color: #e8e8e8;
+  background-color: #1e1c21;
   display: flex;
   align-items: center;
   justify-content: center;

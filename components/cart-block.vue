@@ -27,19 +27,19 @@ const toggleFavourites = () => {
     <span>{{ props.data.address }}</span>
     <div class="cartblock__emotion">
       <div class="cartblock__emotion-item">
-        <Icon name="uil:heart-sign" color="rgb(78, 7, 114)" size="20" />
+        <Icon name="uil:heart-sign" color="#9170a7" size="20" />
         {{ props.data.like }}
       </div>
       <div class="cartblock__emotion-item">
         <Icon
           name="uil:comment-alt-message"
-          color="rgb(78, 7, 114)"
+          color="#9170a7"
           size="20"
         />
         {{ props.data.comment }}
       </div>
       <div class="cartblock__emotion-item">
-        <Icon name="uil:pricetag-alt" color="rgb(78, 7, 114)" size="20" />
+        <Icon name="uil:pricetag-alt" color="#9170a7" size="20" />
         {{ props.data.price }}
       </div>
       <input
@@ -81,8 +81,8 @@ const toggleFavourites = () => {
   flex-direction: column;
   align-items: stretch;
   border-radius: 16px;
-  background: white;
-  border: 1px solid rgb(227, 227, 227);
+  background: #1f1f1f;
+  border: 1px solid #323230;
   p {
     margin: 10px 0;
     flex-grow: 1;
