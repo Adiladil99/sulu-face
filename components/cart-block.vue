@@ -22,7 +22,7 @@ const toggleFavourites = () => {
 </script>
 <template>
   <div class="cartblock">
-    <img :src="`/_nuxt/assets/images/stocks/${props.data.id}.jpeg`" />
+    <img :src="`/stocks/${props.data.id}.jpeg`" />
     <p>{{ props.data.fio }}</p>
     <span>{{ props.data.address }}</span>
     <div class="cartblock__emotion">
