@@ -16,6 +16,8 @@
 <style lang="scss" scoped>
 .masmain {
     display: flex;
+    background: rgb(249,248,242);
+    background: linear-gradient(90deg, rgba(249,248,242,1) 0%, rgba(240,238,230,1) 57%, rgba(231,224,215,1) 100%);
     flex-direction: column;
     align-items: stretch;
     min-width: 100vw;

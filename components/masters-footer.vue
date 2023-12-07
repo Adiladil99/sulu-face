@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer__top container">
       <div class="footer__top-logo">
-        <p>masters.kz</p>
+        <img class="header__top-logo" src="~/assets/logo.png" />
         <span>Сервис онлайн бронирования в сфере красоты и здоровья!</span>
       </div>
       <div class="footer__top-list">
@@ -25,9 +25,9 @@
             gap: 5px;
           "
         >
-          <Icon name="uil:instagram-alt" color="rgb(78, 7, 114)" size="32" />
-          <Icon name="uil:whatsapp-alt" color="rgb(78, 7, 114)" size="32" />
-          <Icon name="uil:telegram" color="rgb(78, 7, 114)" size="32" />
+          <Icon name="uil:instagram-alt" color="#E85A4F" size="32" />
+          <Icon name="uil:whatsapp-alt" color="#E85A4F" size="32" />
+          <Icon name="uil:telegram" color="#E85A4F" size="32" />
         </div>
       </div>
     </div>
@@ -44,7 +44,8 @@
 
 <style lang="scss" scoped>
 .footer {
-  background: white;
+  background: rgb(249,248,242);
+  background: linear-gradient(90deg, rgba(249,248,242,1) 0%, rgba(240,238,230,1) 57%, rgba(231,224,215,1) 100%);
   padding: 28px 0 14px 0;
   border-top: 1px solid rgb(193, 191, 191, 0.4);
   display: flex;
@@ -54,16 +55,16 @@
   &__top {
     display: flex;
     align-items: flex-start;
+    padding-bottom: 20px;
     justify-content: space-between;
     &-logo {
       max-width: 250px;
-      p {
-        font-size: 28px;
-        font-weight: 500;
+      img {
+        width: 250px;
       }
       span {
         font-size: 14px;
-        color: gray;
+        color: #252525;
       }
     }
     &-list {
@@ -76,7 +77,7 @@
         gap: 18px;
         a {
           text-decoration: none;
-          color: gray;
+          color: rgb(21, 20, 20);
           &:hover {
             color: #252525;
           }
@@ -93,6 +94,43 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    &__top {
+      flex-direction: column;
+      gap: 15px;
+      &-logo {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        img {
+          width: 180px;
+        }
+      }
+      &-list {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 10px;
+        div {
+          gap: 10px;
+        }
+      }
+      &-socials {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        div {
+          justify-content: flex-start;
+        }
+      }
+    }
+    &__bottom {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
     }
   }
 }

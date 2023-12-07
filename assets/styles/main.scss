@@ -35,12 +35,42 @@ p, h5, h3, h4, h6 {
       width: 960px;
     }
     @media screen and (max-width: $tablet) {
-      width: 720px;
-    }
-    @media screen and (max-width: $mobile) {
-      width: 540px;
-    }
-    @media screen and (max-width: $mobileSmall) {
-      width: 90%;
+      width: 95vw;
     }
   }
+
+.notActive {
+  cursor: default;
+  opacity: .3;
+}
+.swiper-wrapper {
+  align-items: stretch !important;
+}
+  .home__faqs-item-top {
+    &:hover {
+      svg {
+        path {
+          fill: white !important;
+        }
+      }
+    }
+  }
+
+.titlepage {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.dshow {
+  @media screen and (max-width: 992px) {
+    display: none !important;
+  }
+}
+
+.mshow {
+  display: none !important;
+  @media screen and (max-width: 992px) {
+    display: flex !important;
+  }
+}

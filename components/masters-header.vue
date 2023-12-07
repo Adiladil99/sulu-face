@@ -1,83 +1,275 @@
 <script setup>
-import lists from "@/data/categories.json"
+import lists from "@/data/categories.json";
+const authModal = ref(false);
+
+const closeAuth = () => {
+  authModal.value = false;
+  document.documentElement.style.overflowY = "auto";
+};
 </script>
 
 <template>
   <div class="header">
     <div class="container">
-        <div class="header__top">
-            <p class="header__top-logo">masters.kz</p>
-            <div class="header__top-right">
-                <div>
-                    <Icon name="uil:location-point" color="rgb(78, 7, 114)" />
-                    Алматы
+      <div class="header__top">
+          <NuxtLink to="/" style="margin: 0; padding: 0;">
+            <img class="header__top-logo" src="~/assets/logo.png" />
+          </NuxtLink>
+        <div class="header__top-right">
+          <NuxtLink to="/basket" class="tooltip-container">
+            <span class="tooltip dshow">Корзина</span>
+            <span class="text">
+              <div class="borde-back">
+                <div class="icon1">
+                    <Icon name="uil:shopping-basket" color="white" size="20" />
                 </div>
-                <p>Контакты</p>
-                <button>Войти</button>
-            </div>
-            
+              </div>
+            </span>
+          </NuxtLink>
+          <NuxtLink to="/favourites" class="tooltip-container">
+            <span class="tooltip dshow">Избранные</span>
+            <span class="text">
+              <div class="borde-back">
+                <div class="icon1">
+                    <Icon name="uil:heart" color="white" size="20" />
+                </div>
+              </div>
+            </span>
+          </NuxtLink>
+          <div @click="authModal = true" class="tooltip-container mshow">
+            <span class="text">
+              <div class="borde-back">
+                <div class="icon1">
+                    <Icon name="uil:user" color="white" size="20" />
+                </div>
+              </div>
+            </span>
+          </div>
+          <div class="dshow">
+            <Icon name="uil:location-point" color="#E85A4F" />
+            Алматы
+          </div>
+          <NuxtLink to="/contacts" class="dshow" style="color: #252525; text-decoration: none;">
+            <p>Контакты</p>
+            </NuxtLink>
+          <button @click="authModal = true" class="dshow">Войти</button>
         </div>
-        <div class="header-bottom">
-            <NuxtLink :to="`/c/${item.slug}`" v-for="item in lists" :key="item.id">{{ item.title }}</NuxtLink>
-        </div>
+      </div>
+      <div class="header-bottom dshow">
+        <NuxtLink
+          :to="`/c/${item.slug}`"
+          v-for="item in lists"
+          :key="item.id"
+          >{{ item.title }}</NuxtLink
+        >
+      </div>
     </div>
   </div>
+  <ModalComponent v-if="authModal" :is-open="authModal" @close="closeAuth">
+    <div class="auth">Auth</div>
+  </ModalComponent>
 </template>
 
 <style lang="scss" scoped>
 .header {
-    position: sticky; 
-    background: white;
-    z-index: 999;
-    top: 0;
-    padding: 14px 0;
-    font-weight: 500;
-    border-bottom: 1px solid rgb(193, 191, 191, 0.4);
-    .container {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        align-items: center;
+  position: sticky;
+  background: rgb(249, 248, 242);
+  background: linear-gradient(
+    90deg,
+    rgba(249, 248, 242, 1) 0%,
+    rgba(240, 238, 230, 1) 57%,
+    rgba(231, 224, 215, 1) 100%
+  );
+  z-index: 999;
+  top: 0;
+  padding: 14px 0;
+  font-weight: 500;
+  border-bottom: 1px solid rgb(193, 191, 191, 0.4);
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  &__top {
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-logo {
+      width: 250px;
     }
-    &__top {
+    &-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      div {
+        display: flex;
+        align-items: center;
+      }
+      button {
+        padding: 8px 24px;
+        outline: none;
+        border: none;
+        border-radius: 12px;
+        color: white;
         font-size: 14px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        &-logo {
-            font-size: 28px;
-            font-weight: 500;
+        background: #e85a4f;
+        &:hover {
+          cursor: pointer;
+          background: #ba372d;
         }
-        &-right {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            div {
-                display: flex;
-                align-items: center;
-            }
-            button {
-                padding: 8px 24px;
-                outline: none;
-                border: none;
-                border-radius: 12px;
-                color: white;
-                font-size: 14px;
-                background: rgb(78, 7, 114);
-            }
-        }
+      }
     }
-    &-bottom {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        a {
-            text-decoration: none;
-            font-size: 14px;
-            color: #252525;
-        }
+  }
+  &-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #252525;
     }
+  }
+  @media screen and (max-width: 992px) {
+    padding: 8px 0;
+    &__top {
+      &-logo {
+        width: 180px;
+      }
+      &-right {
+        gap: 15px;
+      }
+    }
+  }
+  @media screen and (max-width: 340px) {
+    &__top {
+      &-logo {
+        width: 150px;
+      }
+    }
+  }
 }
+/* This is an example, feel free to delete this code */
+.tooltip-container {
+    z-index: 2;
+  position: relative;
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 17px;
+  /*padding: 0.7em 1.8em;*/
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  @media screen and (max-width: 500px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+.tooltip-container .borde-back {
+  width: 44px;
+  height: 44px;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: none;
+  @media screen and (max-width: 500px) {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.tooltip-container .icon1 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  cursor: pointer;
+  @media screen and (max-width: 500px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  top: -2;
+  z-index: 9;
+  left: -60px; /* Altere a posição inicial para a esquerda, fora da tela */
+  transform: translateX(
+    -32%
+  ); /* Usando translateX para controlar a transição da esquerda para a direita */
+  width: 150px;
+  height: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s;
+  border-radius: 50px;
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+  padding-left: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 800px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  right: -0.2em; /* Mude para a direita */
+  top: 50%; /* Altere o topo para o meio da tooltip */
+  transform: translateY(-50%) rotate(45deg); /* Use translateY para centralizar verticalmente */
+  background: var(--background);
+}
+
+.tooltip-container:hover .tooltip {
+  right: 100%; /* Altere para a posição desejada (a direita) */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: -10;
+}
+.tooltip-container:hover {
+  transition: 0.5s linear;
+}
+
 </style>
