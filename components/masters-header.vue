@@ -1,9 +1,26 @@
 <script setup>
 import lists from "@/data/categories.json";
-const authModal = ref(false);
+import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
+import useStore from '~/stores/store';
+
+const { requestUser } = useStore(); // use authenticateUser action from  auth store
+const { authenticated, userData } = storeToRefs(useStore());
+
+if (authenticated) {
+  requestUser()
+}
+
+const authClient = ref(false);
+const authMaster = ref(false);
+const res = await useFetchBack("categories", {
+  method: "get"
+})
+const categories = res?.value?.data
+
 
 const closeAuth = () => {
-  authModal.value = false;
+  authClient.value = false;
+  authMaster.value = false;
   document.documentElement.style.overflowY = "auto";
 };
 </script>
@@ -12,16 +29,16 @@ const closeAuth = () => {
   <div class="header">
     <div class="container">
       <div class="header__top">
-          <NuxtLink to="/" style="margin: 0; padding: 0;">
-            <img class="header__top-logo" src="~/assets/logo.png" />
-          </NuxtLink>
+        <NuxtLink to="/" style="margin: 0; padding: 0">
+          <img class="header__top-logo" src="~/assets/logo.png" />
+        </NuxtLink>
         <div class="header__top-right">
           <NuxtLink to="/basket" class="tooltip-container">
             <span class="tooltip dshow">Корзина</span>
             <span class="text">
               <div class="borde-back">
                 <div class="icon1">
-                    <Icon name="uil:shopping-basket" color="white" size="20" />
+                  <Icon name="uil:shopping-basket" color="white" size="20" />
                 </div>
               </div>
             </span>
@@ -31,16 +48,16 @@ const closeAuth = () => {
             <span class="text">
               <div class="borde-back">
                 <div class="icon1">
-                    <Icon name="uil:heart" color="white" size="20" />
+                  <Icon name="uil:heart" color="white" size="20" />
                 </div>
               </div>
             </span>
           </NuxtLink>
-          <div @click="authModal = true" class="tooltip-container mshow">
+          <div @click="authClient = true" class="tooltip-container mshow">
             <span class="text">
               <div class="borde-back">
                 <div class="icon1">
-                    <Icon name="uil:user" color="white" size="20" />
+                  <Icon name="uil:user" color="white" size="20" />
                 </div>
               </div>
             </span>
@@ -49,25 +66,42 @@ const closeAuth = () => {
             <Icon name="uil:location-point" color="#E85A4F" />
             Алматы
           </div>
-          <NuxtLink to="/contacts" class="dshow" style="color: #ececec; text-decoration: none;">
+          <NuxtLink
+            to="/contacts"
+            class="dshow"
+            style="color: #ececec; text-decoration: none"
+          >
             <p>Контакты</p>
+          </NuxtLink>
+          <template v-if="!authenticated">
+            <div
+              @click="authMaster = true"
+              class="dshow"
+              style="cursor: pointer;"
+            >
+              <p>Стать партнером</p>
+            </div>
+            <button @click="authClient = true" class="dshow">Войти</button>
+          </template>
+          <template v-else>
+            <NuxtLink to="/profile">
+              <button class="dshow">Профиль</button>
             </NuxtLink>
-          <button @click="authModal = true" class="dshow">Войти</button>
+          </template>
         </div>
       </div>
       <div class="header-bottom dshow">
         <NuxtLink
           :to="`/c/${item.slug}`"
-          v-for="item in lists"
+          v-for="item in categories"
           :key="item.id"
-          >{{ item.title }}</NuxtLink
+          >{{ item.name }}</NuxtLink
         >
       </div>
     </div>
   </div>
-  <ModalComponent v-if="authModal" :is-open="authModal" @close="closeAuth">
-    <div class="auth">Auth</div>
-  </ModalComponent>
+  <AuthClient v-if="authClient" :is-open="authClient" @close="closeAuth" />
+  <AuthMaster v-if="authMaster" :is-open="authMaster" @close="closeAuth" />
 </template>
 
 <style lang="scss" scoped>
@@ -149,7 +183,7 @@ const closeAuth = () => {
 }
 /* This is an example, feel free to delete this code */
 .tooltip-container {
-    z-index: 2;
+  z-index: 2;
   position: relative;
   background-color: #320020;
   background-image: linear-gradient(
@@ -265,5 +299,4 @@ const closeAuth = () => {
 .tooltip-container:hover {
   transition: 0.5s linear;
 }
-
 </style>

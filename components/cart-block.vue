@@ -22,8 +22,8 @@ const toggleFavourites = () => {
 </script>
 <template>
   <div class="cartblock">
-    <img :src="`/stocks/${props.data.id}.jpeg`" />
-    <p>{{ props.data.fio }}</p>
+    <img :src="`http://localhost:3002${props.data.image}`" />
+    <p>{{ props.data.surname }} {{ props.data.name }}</p>
     <span>{{ props.data.address }}</span>
     <div class="cartblock__emotion">
       <div class="cartblock__emotion-item">
@@ -40,7 +40,7 @@ const toggleFavourites = () => {
       </div>
       <div class="cartblock__emotion-item">
         <Icon name="uil:pricetag-alt" color="#9170a7" size="20" />
-        {{ props.data.price }}
+        <!-- {{ props.data.services[0]?.price }} -->
       </div>
       <input
         value="favorite-button"
@@ -77,6 +77,7 @@ const toggleFavourites = () => {
 .cartblock {
   padding: 8px 8px 20px 8px;
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;

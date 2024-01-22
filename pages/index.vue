@@ -48,6 +48,7 @@ const breakpoints_category = {
     spaceBetween: 18,
   },
 };
+
 const activeFaq = ref();
 const servicesList = useStore();
 const { getServicesId } = storeToRefs(servicesList);
@@ -261,10 +262,10 @@ const { getServicesId } = storeToRefs(servicesList);
         position: relative;
         width: 170px;
         background: #1f1f1f;
+        border: 1px solid #323230;
         height: 140px;
         padding: 16px 25px 0 16px;
         border-radius: 16px;
-        border: 1px solid #323230;
         text-decoration: none;
         color: #fffffd;
         font-size: 14px;

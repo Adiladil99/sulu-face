@@ -6,11 +6,18 @@ export default defineStore({
   state() {
     return {
       services: services_masters,
-      favourites: useCookie('favourites')
+      favourites: useCookie('favourites'),
+      authenticated: useCookie('token') ? true : false,
+      loading: false,
+      role: useCookie('role'),
+      userData: false
     };
   },
   getters: {
     getServicesId: (state) => {
+      return (serviceId) => state.services.filter((user) => user.category_id === serviceId)
+    },
+    getMastersId: (state) => {
       return (serviceId) => state.services.filter((user) => user.category_id === serviceId)
     },
     getFavourites: (state) => {
@@ -31,6 +38,43 @@ export default defineStore({
     },
   },
   actions: {
+    async authenticateUser(datas, roleInfo) {
+      // useFetch from nuxt 3
+      const { data, pending } = await useFetch(`http://localhost:3002/api/auth-${roleInfo}/login`, {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: datas,
+      });
+      this.loading = pending;
+
+      if (data.value) {
+        const token = useCookie('token'); // useCookie new hook in nuxt 3
+        const role = useCookie('role'); // useCookie new hook in nuxt 3
+        token.value = data?.value?.accessToken; // set token to cookie
+        role.value = roleInfo
+        this.authenticated = true;
+        this.role = role // set authenticated  state value to true
+        this.requestUser(data?.value?.accessToken)
+      }
+    },
+    async requestUser(tokens = false) {
+      const token = useCookie('token'); // get token from cookies
+      const { data, pending } = await useFetch(`http://localhost:3002/api/auth-${this.role}/me`, {
+        method: 'get',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${tokens ? tokens : token.value}`
+        },
+      });
+      this.userData = data?.value?.user
+    },
+    logUserOut() {
+      const token = useCookie('token'); // useCookie new hook in nuxt 3
+      const role = useCookie('role'); // useCookie new hook in nuxt 3
+      this.authenticated = false; // set authenticated  state value to false
+      token.value = null; // clear the token cookie
+      role.value = null; // clear the token cookie
+    },
     async addFavourites(data) {
       const newCookie = useCookie('favourites')
       if (!this.favourites) {

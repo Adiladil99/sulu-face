@@ -35,7 +35,24 @@ export default defineNuxtConfig({
   alias: {
     css: resolve(__dirname, "./assets/styles/"),
   },
-  modules: ["@pinia/nuxt", "nuxt-icon", "nuxt-swiper", "nuxt-rating"],
+  runtimeConfig: {
+    baseCDN: "http://localhost:3002",
+    public: {
+      baseURL: process.env.BASE_URL || 'http://localhost:3002/api/',
+    },
+  },
+  modules: ["@pinia/nuxt", "nuxt-icon", "nuxt-swiper", "nuxt-rating", "@samk-dev/nuxt-vcalendar", "@vee-validate/nuxt"],
+  veeValidate: {
+    // disable or enable auto imports
+    autoImports: true,
+    // Use different names for components
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  },
   swiper: { 
     modules: [ 
       'autoplay', 
