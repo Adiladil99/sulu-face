@@ -40,7 +40,7 @@ export default defineStore({
   actions: {
     async authenticateUser(datas, roleInfo) {
       // useFetch from nuxt 3
-      const { data, pending } = await useFetch(`http://localhost:3002/api/auth-${roleInfo}/login`, {
+      const { data, pending } = await useFetch(`https://sulu-admin.devup.kz/api/auth-${roleInfo}/login`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: datas,
@@ -59,7 +59,7 @@ export default defineStore({
     },
     async requestUser(tokens = false) {
       const token = useCookie('token'); // get token from cookies
-      const { data, pending } = await useFetch(`http://localhost:3002/api/auth-${this.role}/me`, {
+      const { data, pending } = await useFetch(`https://sulu-admin.devup.kz/api/auth-${this.role}/me`, {
         method: 'get',
         headers: { 
           'Content-Type': 'application/json',

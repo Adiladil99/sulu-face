@@ -36,9 +36,9 @@ export default defineNuxtConfig({
     css: resolve(__dirname, "./assets/styles/"),
   },
   runtimeConfig: {
-    baseCDN: "http://localhost:3002",
+    baseCDN: "https://sulu-admin.devup.kz",
     public: {
-      baseURL: process.env.BASE_URL || 'http://localhost:3002/api/',
+      baseURL: process.env.BASE_URL || 'https://sulu-admin.devup.kz/api/',
     },
   },
   modules: ["@pinia/nuxt", "nuxt-icon", "nuxt-swiper", "nuxt-rating", "@samk-dev/nuxt-vcalendar", "@vee-validate/nuxt"],

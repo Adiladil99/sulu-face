@@ -22,7 +22,7 @@ const toggleFavourites = () => {
 </script>
 <template>
   <div class="cartblock">
-    <img :src="`http://localhost:3002${props.data.image}`" />
+    <img :src="`https://sulu-admin.devup.kz${props.data.image}`" />
     <p>{{ props.data.surname }} {{ props.data.name }}</p>
     <span>{{ props.data.address }}</span>
     <div class="cartblock__emotion">
